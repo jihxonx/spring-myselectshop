@@ -2,7 +2,7 @@ package org.example.myselectshop.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.myselectshop.Service.ProductService;
+import org.example.myselectshop.service.ProductService;
 import org.example.myselectshop.entity.Product;
 import org.example.myselectshop.naver.dto.ItemDto;
 import org.example.myselectshop.naver.service.NaverApiService;

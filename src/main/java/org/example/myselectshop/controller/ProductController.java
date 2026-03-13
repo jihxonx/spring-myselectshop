@@ -1,7 +1,7 @@
 package org.example.myselectshop.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.myselectshop.Service.ProductService;
+import org.example.myselectshop.service.ProductService;
 import org.example.myselectshop.dto.ProductMypriceRequestDto;
 import org.example.myselectshop.dto.ProductRequestDto;
 import org.example.myselectshop.dto.ProductResponseDto;

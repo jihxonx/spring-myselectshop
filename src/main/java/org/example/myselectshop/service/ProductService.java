@@ -1,4 +1,4 @@
-package org.example.myselectshop.Service;
+package org.example.myselectshop.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.myselectshop.dto.ProductMypriceRequestDto;
