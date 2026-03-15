@@ -74,6 +74,6 @@ public class UserController {
         model.addAttribute("folders", folderService.getFolders(userDetails.getUser()));
 
 
-        return "index :: #frament";
+        return "index :: #fragment";
     }
 }
