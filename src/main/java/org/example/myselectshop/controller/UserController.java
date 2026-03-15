@@ -7,9 +7,11 @@ import org.example.myselectshop.dto.SignupRequestDto;
 import org.example.myselectshop.dto.UserInfoDto;
 import org.example.myselectshop.entity.UserRoleEnum;
 import org.example.myselectshop.security.UserDetailsImpl;
+import org.example.myselectshop.service.FolderService;
 import org.example.myselectshop.service.UserService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final FolderService folderService;
 
     @GetMapping("/user/login-page")
     public String loginPage() {
@@ -41,7 +44,7 @@ public class UserController {
     public String signup(@Valid SignupRequestDto requestDto, BindingResult bindingResult) {
         // Validation 예외처리
         List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-        if(fieldErrors.size() > 0) {
+        if (fieldErrors.size() > 0) {
             for (FieldError fieldError : bindingResult.getFieldErrors()) {
                 log.error(fieldError.getField() + " 필드 : " + fieldError.getDefaultMessage());
             }
@@ -62,5 +65,15 @@ public class UserController {
         boolean isAdmin = (role == UserRoleEnum.ADMIN);
 
         return new UserInfoDto(username, isAdmin);
+    }
+
+    @GetMapping("/user-folder")
+    public String getUserInfo(Model model,
+                              @AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+        model.addAttribute("folders", folderService.getFolders(userDetails.getUser()));
+
+
+        return "index :: #frament";
     }
 }
