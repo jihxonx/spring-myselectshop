@@ -32,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public Page<ProductResponseDto>  getProducts(
+    public Page<ProductResponseDto> getProducts(
             @RequestParam("page") int page,
             @RequestParam("size") int size,
             @RequestParam("sortBy") String sortBy,
@@ -41,6 +41,14 @@ public class ProductController {
 
         return productService.getProducts(userDetails.getUser(),
                 page - 1, size, sortBy, isAsc);
+    }
+
+    @PostMapping("/products/{productId}/folder")
+    public void addFolder(@PathVariable Long productId,
+                          @RequestParam Long folderId,
+                          @AuthenticationPrincipal UserDetailsImpl userDetails) {
+
+        productService.addFolder(productId, folderId, userDetails.getUser());
     }
 
 //    @GetMapping("/admin/products")
