@@ -151,6 +151,9 @@ src/main/java/org/example/myselectshop
 │   └── UserService.java
 └── util
     └── TestDataRunner.java
+```
+
+---
 
 ## 7. API 명세
 
@@ -199,4 +202,10 @@ src/main/java/org/example/myselectshop
 
 ---
 
+## 8. 실행 방법
 
+### 8-1. 프로젝트 클론
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd myselectshop
