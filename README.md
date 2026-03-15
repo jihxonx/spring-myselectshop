@@ -152,4 +152,56 @@ src/main/java/org/example/myselectshop
 └── util
     └── TestDataRunner.java
 
+## 7. API 명세
 
+### 7-1. 회원 API
+
+#### 회원가입
+- `POST /api/user/signup`
+
+#### 로그인
+- `POST /api/user/login`
+
+#### 로그인 사용자 정보 조회
+- `GET /api/user-info`
+
+#### 로그인 사용자 폴더 fragment 조회
+- `GET /api/user-folder`
+
+---
+
+### 7-2. 상품 API
+
+#### 상품 검색
+- `GET /api/search?query=...`
+
+#### 관심상품 등록
+- `POST /api/products`
+
+#### 희망 가격 수정
+- `PUT /api/products/{id}`
+
+#### 관심상품 조회
+- `GET /api/products?page=&size=&sortBy=&isAsc=`
+
+---
+
+### 7-3. 폴더 API
+
+#### 폴더 생성
+- `POST /api/folders`
+
+#### 내 폴더 조회
+- `GET /api/folders`
+
+#### 관심상품에 폴더 추가
+- `POST /api/products/{productId}/folder?folderId=`
+
+---
+
+## 8. 실행 방법
+
+### 8-1. 프로젝트 클론
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd myselectshop
