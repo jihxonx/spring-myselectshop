@@ -20,6 +20,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -29,12 +32,27 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserController {
 
+    @Value("${kakao.client.id}")
+    private String kakaoClientId;
+
+    @Value("${kakao.redirect.uri}")
+    private String kakaoRedirectUri;
+
     private final UserService userService;
     private final FolderService folderService;
     private final KakaoService kakaoService;
 
     @GetMapping("/user/login-page")
-    public String loginPage() {
+    public String loginPage(Model model) {
+        String kakaoLoginUrl = UriComponentsBuilder
+                .fromUriString("https://kauth.kakao.com/oauth/authorize")
+                .queryParam("client_id", kakaoClientId)
+                .queryParam("redirect_uri", kakaoRedirectUri)
+                .queryParam("response_type", "code")
+                .build()
+                .toUriString();
+
+        model.addAttribute("kakaoLoginUrl", kakaoLoginUrl);
         return "login";
     }
 

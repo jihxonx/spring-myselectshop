@@ -396,8 +396,8 @@ button {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    /*margin: 0 0 8px;*/
     padding: 11px 12px;
+    box-sizing: border-box;
     border-radius: 5px;
     background-color: #ffd43b;
 
@@ -407,6 +407,7 @@ button {
     font-stretch: normal;
     font-style: normal;
     color: #414141;
+    text-decoration: none;
 }
 
 #login-id-btn {
